@@ -20,12 +20,11 @@ def get_users(req):
 
 def add_users(req):
   # View the Dictionary that was Posted
-  print(req)
   # Get the name (for Status just write "Status")
 
   newPsw = str(req.params.getall("password"))
   newPsw = newPsw[2:len(newPsw)-2]
-
+  # Get the name the user entered
   newName = str(req.params.getall("name"))
   newName = newName[2:len(newName)-2]
 
