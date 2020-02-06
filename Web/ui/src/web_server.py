@@ -20,8 +20,8 @@ def show_users(req):
 def add_new_user(req):
   print("||||||||||||||||-->>>>> ")
   # GEt all the data that is going to be sent (needs to be a dict like "data")
-  print(req.GET)
-  data = {"name": req.params['email'], "Status":  req.params['psw']}
+  print(req.params)
+  data = {"name": req.params['email'], "password":  req.params['psw']}
   New_user = requests.post(REST_SERVER + '/new_users', data = data).json()
   print("||||||||||||||||   List of users in table:", end ='')
   return render_to_response('templates/show_users.html', {'users': New_user}, request=req)
@@ -33,15 +33,17 @@ def add_new_user(req):
 # Compare credentials from request to json
 def valid_user(req):
   #-------------code to make ---------------#
-  return False
+  data = {"name": req.params['email'], "password":  req.params['psw']}
+  validity = requests.post(REST_SERVER + '/check_valid', data = data).json()
+  return validity
 
 
 # Route to validate login credentials...
 def post_login(req):
   if valid_user(req):
-    return render_to_response('templates/did_log_in.html', {}, request = req)
+    return render_to_response('templates/portal.html', {}, request = req)
   else:
-    return render_to_response('templates/show_log.html', {'error': 'invalid user'}, request=req)
+    return render_to_response('templates/sign_up.html', {}, request = req)
 
 # These currently just render the html files 
 def sign_up(req):
@@ -84,7 +86,9 @@ if __name__ == '__main__':
 
   config.add_route('login', '/login')
   config.add_view(login, route_name='login')
-
+ 
+  config.add_route('post_login', '/post_login')
+  config.add_view(post_login, route_name='post_login', request_method = "POST")
 
 
   config.add_static_view(name='/', path = './public', cache_max_age = 3600)
