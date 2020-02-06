@@ -20,7 +20,12 @@ def show_users(req):
 def add_new_user(req):
   print("||||||||||||||||-->>>>> ")
   # GEt all the data that is going to be sent (needs to be a dict like "data")
-  print(req.GET)
+  print(req.params)
+  # Get all the values for parameter "email"
+  print(req.params.getall('email'))
+  # Get all the values for paramter "psw"
+  print(req.params.getall('psw'))
+  
   data = {"name": "Apple-Boy", "Status": "fuck you server"}
   New_user = requests.post(REST_SERVER + '/new_user', data = data).json()
   print("||||||||||||||||   List of users in table:", end ='')
