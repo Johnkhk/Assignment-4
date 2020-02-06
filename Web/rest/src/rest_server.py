@@ -18,18 +18,21 @@ def get_users(req):
     return EnvironmentError
 
 
-
-
-
 def add_users(req):
   # View the Dictionary that was Posted
-  print(req.POST)
+  print(req)
   # Get the name (for Status just write "Status")
-  print(req.params.getall("name"))
+
+  newPsw = str(req.params.getall("Status"))
+  newPsw = newPsw[2:len(newPsw)-2]
+
+  newName = str(req.params.getall("name"))
+  newName = newName[2:len(newName)-2]
+
 
   # Implement code to add to json()
   
-  y = {"name": "J-Boy", "status": "Validated"}
+  y = {"name": newName, "status": newPsw}
   try:
     with open('users.txt', 'r') as user_files:
       try:
@@ -68,7 +71,7 @@ if __name__ == '__main__':
   config.add_view(get_users, route_name='users_route', renderer='json')
 
 
-  config.add_route('add_new_user', '/new_user')
+  config.add_route('add_new_user', '/new_users')
   config.add_view(add_users, route_name ='add_new_user', renderer='json')
 
 
