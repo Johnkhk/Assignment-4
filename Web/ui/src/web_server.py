@@ -18,12 +18,10 @@ def show_users(req):
 
 
 def add_new_user(req):
-  print("||||||||||||||||-->>>>> ")
-  # GEt all the data that is going to be sent (needs to be a dict like "data")
-  print(req.GET)
+  # Get all the data that is going to be sent (needs to be a dict like "data")
+  # print(req.GET) # Used for debugging
   data = {"name": req.params['email'], "Status":  req.params['psw']}
   New_user = requests.post(REST_SERVER + '/new_users', data = data).json()
-  print("||||||||||||||||   List of users in table:", end ='')
   return render_to_response('templates/show_users.html', {'users': New_user}, request=req)
 
 
