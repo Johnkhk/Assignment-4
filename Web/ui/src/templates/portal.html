@@ -1,0 +1,37 @@
+<!-- Button to open the modal login form -->
+<html>
+  <!-- Importing css templates (NOTE: js importation does not work-->
+  <link rel="stylesheet" type="text/css" href="portal.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  
+  <script type="text/javascript" src="portal.js">
+  </script>
+
+  <style>
+  .w3-button {width:150px;}
+  </style>
+
+  <!-- Scripts to re-direct the user to the respective pages if the on.click buttons are triggered -->
+  <script>
+    function log_in() {
+      window.location.href ="http://localhost:5000/login";
+    }
+    function sign_up(){
+      window.location.href ="http://localhost:5000/sign_up";
+    }
+  </script>
+  
+
+  <!-- Body composition of the page -->
+  <body>
+    <h1 align = "center">Welcome!</h1>
+  <p align="center">Please log in or sign up.</p>
+  
+  <div class="w3-container">
+    <p align='center'><button class="w3-button w3-dark-grey w3-round-xxlarge" onclick="log_in()">Log In</button></p>
+    <p align='center'><button class="w3-button w3-light-grey w3-round-xxlarge" onclick="sign_up()">Sign Up</button></p>
+  </div>
+  
+  <sign_button align ='center'> fuck school - john angiuli</sign_button>
+  </body>
+  
+</html>

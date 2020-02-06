@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="did_log_in.css">
+<link rel="stylesheet" type="text/css" href="sign_up.css">
+<form action="portal" method="GET">
+
+  <div class="pad-me">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="userid" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="pwd" required>
+
+    <button type="submit" onclick="return validate(this.form)" value="Login">Login</button>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="reset">Reset</button>
+    <button type="button" class='reset' onclick="sign_up()" 
+                style = "background-color: #4CAF98;
+                color: white;">Sign Up</sign_button>
+</span>
+  </div>
+
+
+<script language="javascript">
+
+function validate(form)
+{
+Verified = form.userid.value == "Jetbot" && form.pwd.value == "Jesi";
+if(Verified)
+{
+	return true;
+}
+else
+{
+	alert("Invalid credentials.")
+	return false;
+}
+}
+</script>
+
+<script>
+  function sign_up() {
+    window.location.href ="http://localhost:5000/sign_up";
+  }
+</script>
+</form>
+
+
+
+</html>

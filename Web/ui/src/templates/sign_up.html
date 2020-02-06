@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<link rel="stylesheet" type="text/css" href="sign_up.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  
+
+
+<script>
+  function welcome() {
+    window.location.href ="http://localhost:5000/";
+  }
+
+  function get_input(){
+    let email = document.getElementById("email");
+    let psw = document.getElementById("psw") 
+
+    let request = {};
+    request["email"] = email;
+    request["psw"] = psw;
+    
+
+    http.post("http://localhost:5000/new_user", params = request )
+
+    window.location.href ="http://localhost:5000/";
+  }
+
+</script>
+
+
+<body>
+  <form action="/new_user" method="POST">
+    <div class="container">
+      <h1 align='center'>Sign Up</h1 al>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" id = "email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id = "psw" required>
+      </hr>
+
+      <div class="w3-container">
+        <p align='center'> <button class="w3-button w3-round-xxlarge w3-red" onclick= "welcome()">Cancel</button></p>
+        <p align='center'> <button class="w3-button w3-round-xxlarge w3-teal" type='submit' onclick= "get_input()">Sign Up</button></p>  
+      </div>
+    </div>
+  </form>
+</body>
+
+</body>
+</html>
