@@ -8,7 +8,7 @@ import os
 REST_SERVER = os.environ['REST_SERVER']
 
 
-#Show all the users in the database
+# Show all the users in the database
 def show_users(req):
   # "/users" comes from the route defined in rest_server.py
   Users = requests.get(REST_SERVER + "/users").json()
@@ -18,10 +18,9 @@ def show_users(req):
 
 
 def add_new_user(req):
-  print("||||||||||||||||-->>>>> ")
-  # GEt all the data that is going to be sent (needs to be a dict like "data")
-  print(req.params)
-  data = {"name": req.params['email'], "password":  req.params['psw']}
+  # Get all the data that is going to be sent (needs to be a dict like "data")
+  # print(req.params) #debugging
+  data = {"Username": req.params['Username'], "Password":  req.params['Password']}
   New_user = requests.post(REST_SERVER + '/new_users', data = data).json()
   return render_to_response('templates/show_users.html', {'users': New_user}, request=req)
 
@@ -31,7 +30,7 @@ def add_new_user(req):
 
 # Compare credentials from request (from user) to json
 def valid_user(req):
-  data = {"name": req.params['email'], "password":  req.params['psw']}
+  data = {"Username": req.params['Username'], "Password":  req.params['Password']}
   validity = requests.post(REST_SERVER + '/check_valid', data = data).json()
   return validity
 
@@ -63,7 +62,7 @@ if __name__ == '__main__':
   config.include('pyramid_jinja2')
   config.add_jinja2_renderer('.html')
 
-  # This is the main page localhost:50000
+  # This is the "MAIN" page localhost:50000
   # Adds a route v2 so you can have localhost:5000/ or localhost:5000/v2
   config.add_route('v2', '/')
   # Loading stuff from the server
