@@ -48,13 +48,18 @@ def sign_up(req):
 
 def portal(req):
   return render_to_response('templates/portal.html', {}, request =req)
-
+ 
 def login(req):
   return render_to_response('templates/did_log_in.html', {}, request =req)
 
+def admin(req):
+  Users = requests.get(REST_SERVER + "/users").json()
+  return render_to_response('templates/adminportal.html',{'users': Users}, request =req)
+
+
 
 ########################################################################################
-#                           Main Function
+#                      Stupidest some people take     Main Function
 ########################################################################################
 if __name__ == '__main__':
 
@@ -66,7 +71,7 @@ if __name__ == '__main__':
   # Adds a route v2 so you can have localhost:5000/ or localhost:5000/v2
   config.add_route('v2', '/')
   # Loading stuff from the server
-  config.add_view(portal, route_name='v2')
+  config.add_view(admin, route_name='v2')
   
 
   config.add_route('show_users', '/show_users')
