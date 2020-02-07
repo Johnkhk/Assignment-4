@@ -20,17 +20,17 @@ def get_users(req):
 
 def add_users(req):
   # View the Dictionary that was Posted
-  # Get the name (for Status just write "Status")
-
-  newPsw = str(req.params.getall("password"))
-  newPsw = newPsw[2:len(newPsw)-2]
-  # Get the name the user entered
-  newName = str(req.params.getall("name"))
-  newName = newName[2:len(newName)-2]
+  # Get the Password
+  newPsw = str(req.params.getall("Password"))
+  newPsw = newPsw[2:len(newPsw)-2]                    # Get rid of the [] that comes from req
+  print(newPsw)
+  newName = str(req.params.getall("Username"))            # Get the name the user entered
+  newName = newName[2:len(newName)-2]                 # Get rid of the [] that comes from req
+  print(newName)
 
 
   # This will append user information to json
-  y = {"name": newName, "password": newPsw, "status": "Pending"}
+  user_info = {"Username": newName, "Password": newPsw, "status": "Pending"}
   try:
     with open('users.txt', 'r') as user_files:
       try:
@@ -38,13 +38,13 @@ def add_users(req):
       except json.decoder.JSONDecodeError:
         user_files.close()
         with open('users.txt', 'w+') as user_files:
-         user_logs2 = [y]
+         user_logs2 = [user_info]
          json.dump(user_logs2, user_files)
          user_files.close()
          return user_logs2
       user_files.close()
     with open('users.txt', 'w+') as user_files:
-      user_logs2.append(y)
+      user_logs2.append(user_info)
       json.dump(user_logs2, user_files)
       return user_logs2
   except:
@@ -54,17 +54,17 @@ def add_users(req):
 
 
 def check_valid(req):
-  newPsw = str(req.params.getall("password"))
+  newPsw = str(req.params.getall("Password"))
   newPsw = newPsw[2:len(newPsw)-2]
 
-  newName = str(req.params.getall("name"))
+  newName = str(req.params.getall("Username"))
   newName = newName[2:len(newName)-2]
   try:
     with open('users.txt', 'r') as user_files:
       user_logs = json.load(user_files)
       for logs in user_logs:
-        if logs["name"] == newName:
-          if logs["password"] == newPsw:
+        if logs["Username"] == newName:
+          if logs["Password"] == newPsw:
             user_files.close()
             return True
           else:
