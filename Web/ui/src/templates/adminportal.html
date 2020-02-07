@@ -1,172 +1,25 @@
 <!DOCTYPE html><!-- Button to open the modal login form -->
 <html>
+  
 <body>
 <h1>Welcome Admins!</h1>
 <p>Admin Portal.</p>
+
+  <table id="myTable"style="width:30%" align='center'>
+    <tr>
+      <th>List of Users</th>
+      <th>Status</th>
+      <th>Revoke Access</th>
+      <th>Grant Access</th>
+    </tr>
+    {% for user in users %}
+
+    <tr>
+      <td>{{user.name}}</td>
+      <td>{{user.status}}</td>
+    </tr>
+    {% endfor %}
+
+  </table>
 </body>
-
-
-
-<form action="/post_login" method="GET"></form>
-
-<tbody>
-  {% for user in users %}
-  <tr>
-    <td>{{user.name}}</td>
-    <td>{{user.status}}</td>
-  </tr>
-  {% endfor %}
-</tbody>
-
-<script>
-for (var key in data) {
-        var row = table.insertRow(-1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var userid = {{user}}
-        var userstatus = {{user.status}}
-        cell1.innerHTML = userid;
-        cell2.innerHTML = userstatus;
-        
-    }
-</script>
-                                
-<span id="buttonAppear"></span>
-
-<header>
-  {
-    {{user.name}}
-  }
-</header>
-
-
-<script>
-function myFunction() {
-  var table = document.getElementById("myTable");
-  var row = table.insertRow(-1);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
-  var cell4 = row.insertCell(3);
-  cell1.innerHTML = {{user.name}};
-  cell2.innerHTML = "NEW CELL2";
-  if (table != null) {
-        for (var i = 0; i < table.rows.length; i++) {
-            for (var j = 0; j < table.rows[i].cells.length; j++)
-            table.rows[i].cells[j].onclick = function () {
-                tableText(this);
-                //alert(table.rows[i].cells[j].innerHTML);
-                //alert(table.rows[i].cells[j].innerHTML);
-                
-            };
-        }
-    }
-
-    function tableText(tableCell) {
-        alert(tableCell.innerHTML);
-        
-    }
- 
-  }
-
-
-/*
-  if (table != null) {
-    for (var i = 0; i < table.rows.length; i++) {
-        for (var j = 0; j < table.rows[i].cells.length; j++)
-        table.rows[i].cells[j].onclick = function () {
-            if(j==2)
-            {
-                print();
-            }
-            else if(j==3)
-            {
-                print();
-            }
-        };
-    }
-}*/
-
-
-
-</script>
-
-
-<script>
-function newFunction() 
-{
-
-}
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-var table = document.getElementById("myTable");
-if (table != null) {
-    for (var i = 0; i < table.rows.length; i++) {
-        for (var j = 0; j < table.rows[i].cells.length; j++)
-        table.rows[i].cells[j].onclick = function () {
-            myFunction(this);
-        };
-    }
-}
-</script>
-
-<table id="myTable"style="width:30%" align='center'>
-  <tr>
-    <th>List of Users</th>
-    <th>Status</th>
-    <th>Revoke Access</th>
-    <th>Grant Access</th>
-</table>
-
-<script>
-
-</script>
-
-<button onclick="document.getElementById('id01').style.display='block'">Confirm User Access (Pending to Verified)</button>
-
-<br/>
-
-<button onclick="document.getElementById('id01').style.display='block'">Revoke User Access (Verified to Void)</button>
-
-
-
-
-
-
-
-
-
-<!-- The Modal -->
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'"
-class="close" title="Close Modal">&times;</span>
-
-  <!-- Modal Content 
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    </div> -->
-
-    
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" 
-    </div>
-  </form>
-</div>
-
 </html>
