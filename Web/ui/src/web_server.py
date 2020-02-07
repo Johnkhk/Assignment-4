@@ -71,7 +71,7 @@ if __name__ == '__main__':
   # Adds a route v2 so you can have localhost:5000/ or localhost:5000/v2
   config.add_route('v2', '/')
   # Loading stuff from the server
-  config.add_view(admin, route_name='v2')
+  config.add_view(portal, route_name='v2')
   
 
   config.add_route('show_users', '/show_users')
