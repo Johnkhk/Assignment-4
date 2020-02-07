@@ -30,7 +30,7 @@ def add_users(req):
 
 
   # This will append user information to json
-  user_info = {"Username": newName, "Password": newPsw, "status": "Pending"}
+  user_info = {"Username": newName, "Password": newPsw, "Status": "Pending"}
   try:
     with open('users.txt', 'r') as user_files:
       try:
