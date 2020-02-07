@@ -29,9 +29,8 @@ def add_new_user(req):
 
 
 
-# Compare credentials from request to json
+# Compare credentials from request (from user) to json
 def valid_user(req):
-  #-------------code to make ---------------#
   data = {"name": req.params['email'], "password":  req.params['psw']}
   validity = requests.post(REST_SERVER + '/check_valid', data = data).json()
   return validity
