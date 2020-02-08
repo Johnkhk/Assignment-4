@@ -1,8 +1,10 @@
 <!DOCTYPE html><!-- Button to open the modal login form -->
+<link rel="stylesheet" type="text/css" href="portal.css">
 <html>
   
 <body>
 <h1 align='center'>Welcome Admins!</h1>
+
 <p align='center'>Admin Portal.</p>
 
   <table id="myTable"style="width:30%" align='center'>
@@ -17,9 +19,18 @@
     <tr>
       <td>{{user.Username}}</td>
       <td>{{user.Status}}</td>
+      <td><button onclick="return veruser(this.form)" class=".button1">Confirm User</button></td>
+      <td><button onclick="return voiduser(this.form)" class=".button2">Revoke User</button></td>
     </tr>
     {% endfor %}
 
   </table>
 </body>
+
+<script>
+function veruser(form)
+
+function voiduser(form)
+</script>
+
 </html>
