@@ -59,11 +59,14 @@ def check_valid(req):
 
   newName = str(req.params.getall("Username"))
   newName = newName[2:len(newName)-2]
+
   try:
     with open('users.txt', 'r') as user_files:
       user_logs = json.load(user_files)
       for logs in user_logs:
         if logs["Username"] == newName:
+          if logs["Status"] != "Valid":
+            return False
           if logs["Password"] == newPsw:
             user_files.close()
             return True

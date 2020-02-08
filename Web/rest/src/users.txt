@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 [{"Username": "fuck", "Password": "school", "Status": "Pending"}, {"Username": "fuck", "Password": "fuck", "Status": "Pending"}]
+=======
+[{"Username": "Jesi", "Password": "Jetbot", "Status": "Pending"}]
+>>>>>>> ce6a68fc5b0b79ccc8be3b52be74205970af2cf7
