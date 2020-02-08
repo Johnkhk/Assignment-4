@@ -22,21 +22,28 @@ def add_users(req):
   # View the Dictionary that was Posted
   # Get the Password
   newPsw = str(req.params.getall("Password"))
-  newPsw = newPsw[2:len(newPsw)-2]                    # Get rid of the [] that comes from req
+  # Get rid of the [] that comes from req
+  newPsw = newPsw[2:len(newPsw)-2]                    
   print(newPsw)
-  newName = str(req.params.getall("Username"))            # Get the name the user entered
-  newName = newName[2:len(newName)-2]                 # Get rid of the [] that comes from req
+  # Get the name the user entered
+  newName = str(req.params.getall("Username"))    
+  # Get rid of the [] that comes from req
+  newName = newName[2:len(newName)-2]                 
   print(newName)
 
 
   # This will append user information to json
   user_info = {"Username": newName, "Password": newPsw, "Status": "Pending"}
   try:
+    # Open the file to read from it
     with open('users.txt', 'r') as user_files:
       try:
+        # Load the json file
         user_logs2 = json.load(user_files)
       except json.decoder.JSONDecodeError:
+        # If an error occurs, close the file
         user_files.close()
+        # Open file to write to it the first time
         with open('users.txt', 'w+') as user_files:
          user_logs2 = [user_info]
          json.dump(user_logs2, user_files)
