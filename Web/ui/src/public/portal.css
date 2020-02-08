@@ -8,3 +8,39 @@ sign_button {
     width: 100%;
     opacity: 0.9;
   }
+
+.button1 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+  }
+  .button2 {
+    background-color: rgb(175, 76, 76); /* red */
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+  }
+  
+  
+  table, th, td {
+    border: 1px solid black;
+  }
+  
+  body {
+  background-color: lightblue;
+}
+  h1 {
+    color: navy;
+    margin-left: 20px;
+  }
