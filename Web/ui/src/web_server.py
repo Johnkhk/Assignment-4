@@ -27,13 +27,9 @@ def add_new_user(req):
 def changestatus(req):
   # Get all the data that is going to be sent (needs to be a dict like "data")
   # print(req.params) #debugging
-  data = {"Status": req.params['Status']}
-  newstatus = requests.post(REST_SERVER + '/changestatus', data = data).json()
+  data = {"Username" : req.params['Usermane'], "Status": req.params['Status']}
+  newstatus = requests.post(REST_SERVER + '/change_status', data = data).json()
   return render_to_response('templates/adminportal.html', {'Users': newstatus}, request=req)
-
-
-
-
 
 # Compare credentials from request (from user) to json
 def valid_user(req):

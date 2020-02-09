@@ -53,6 +53,8 @@ def add_users(req):
     with open('users.txt', 'w+') as user_files:
       user_logs2.append(user_info)
       json.dump(user_logs2, user_files)
+      user_files.close()
+
       return user_logs2
   except:
     return Exception
@@ -85,7 +87,37 @@ def check_valid(req):
     return False
 
 
+def change_status(req):
+  # View the Dictionary that was Posted
+  # Get the Password
+  usrChanged = str(req.params.getall("Username"))
+  # Get rid of the [] that comes from req
+  usrChanged = usrChanged[2:len(usrChanged)-2]                    
 
+  newStatus = str(req.params.getall("Status"))    
+  newStatus = newStatus[2:len(newStatus)-2]   
+
+
+  try:
+    # Open the file to read from it
+    with open('users.txt', 'r') as user_files:
+      try:
+        # Load the json file
+        user_logs2 = json.load(user_files)
+      except json.decoder.JSONDecodeError:
+        # If an error occurs, close the file
+        user_files.close()
+        return False
+      user_files.close()
+    with open('users.txt', 'w+') as user_files:
+      for user in user_logs2:
+        if usrChanged == user["Username"]:
+          user["Status"] = newStatus
+          json.dump(user_logs2, user_files)
+          user_files.close()          
+      return user_logs2
+  except:
+    return False
 
 
 
@@ -101,8 +133,8 @@ if __name__ == '__main__':
   config.add_route('check_validity', '/check_valid')
   config.add_view(check_valid, route_name ='check_validity', renderer='json')
 
-  config.add_route('changestatus', '/changestatus')
-  config.add_view(changestatus, route_name ='changestatus', renderer='json')
+  config.add_route('change_status', '/change_status')
+  config.add_view(change_status, route_name ='change_status', renderer='json')
 
   app = config.make_wsgi_app()
   server = make_server('0.0.0.0', 5000, app)

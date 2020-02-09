@@ -34,18 +34,18 @@
 
       <td> <button class="verify">Verify User</button> </td> </td>
 
-      <td> <button class="void">Void User</button> </td> </td>
+      <td> <button class="void" type='submit' onclick= "get_input()">Void User</button> </td> </td>
       
     </tr>
 
 
 
     <script>
-    myarray[count]=count;
+    //myarray[count]=count;
     count++;
-    console.log(count);
-    console.log(myarray);
-    console.log()
+    //console.log(count);
+    //console.log(myarray);
+    //console.log()
     //var button1[count] = document.getElementById("verify");
     //button1[count].id = "verify"+count;
 
@@ -63,6 +63,12 @@
     x++;
   }*/
   var x = 0;
+
+  function get_input(input){
+    console.log(x)
+    console.log(input)
+  }
+
     
         document.getElementsByClassName("verify")[x].onclick = function()
         {
