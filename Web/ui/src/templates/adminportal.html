@@ -19,26 +19,58 @@
 
     <script>
     var count = 0;
-    //var array;
+    var myarray = new Array();
     </script>
+
+    <!--<button id="verify">Verify User</button> </td>
+    <button id="void">Void User</button> </td-->
+
     {% for user in users %}
 
     <tr>
       <td>{{user.Username}}</td>
-      <td Id = "status".user>{{user.Status}}</td>
-      <td> <button Id="button1">Confirm User</button> </td>
-      <td> <button Id="button2">Void User</button> </td>
+
+      <td id = "status">{{user.Status}}</td>
+
+      <td> <button onclick="veruser()" id="verify">Verify User</button> </td> </td>
+
+      <td> <button onclick="voiduser()" id="void">Void User</button> </td> </td>
       
     </tr>
+
+
+
     <script>
-    //array[count ++];
+    myarray[count]=count;
     count++;
     console.log(count);
-    console.log("COMEOB");
+    console.log(myarray);
+    console.log()
+    //var button1[count] = document.getElementById("verify");
+    //button1[count].id = "verify"+count;
+
+    //var button2[count] = document.getElementById("void");
+    //button2[count].id = "void"+count;
     </script>
     {% endfor %}
-
   </table>
+
+  <script>
+    
+    function veruser(){
+      var table = document.getElementById("myTable");
+      //table.rows[count][1].innerHTML = "Verified"
+      document.getElementById("status").innerHTML = "Verified"
+    }
+    
+    function voiduser(){
+      var table = document.getElementById("myTable");
+      //table.rows[count][1].innerHTML = "Void"
+      document.getElementById("status").innerHTML = "Void!"
+    }
+    </script>
+    
+  
 </body>
 
 
