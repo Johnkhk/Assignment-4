@@ -14,23 +14,33 @@
       <th>Revoke Access</th>
       <th>Grant Access</th>
     </tr>
+
+
+
+    <script>
+    var count = 0;
+    //var array;
+    </script>
     {% for user in users %}
 
     <tr>
       <td>{{user.Username}}</td>
-      <td>{{user.Status}}</td>
-      <td><button onclick="return veruser(this.form)" class="button1">Confirm User</button></td>
-      <td><button onclick="return voiduser(this.form)" class="button2">Revoke User</button></td>
+      <td Id = "status".user>{{user.Status}}</td>
+      <td> <button Id="button1">Confirm User</button> </td>
+      <td> <button Id="button2">Void User</button> </td>
+      
     </tr>
+    <script>
+    //array[count ++];
+    count++;
+    console.log(count);
+    console.log("COMEOB");
+    </script>
     {% endfor %}
 
   </table>
 </body>
 
-<script>
-function veruser(form)
 
-function voiduser(form)
-</script>
 
 </html>
