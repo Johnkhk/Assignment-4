@@ -101,6 +101,9 @@ if __name__ == '__main__':
   config.add_route('check_validity', '/check_valid')
   config.add_view(check_valid, route_name ='check_validity', renderer='json')
 
+  config.add_route('changestatus', '/changestatus')
+  config.add_view(changestatus, route_name ='changestatus', renderer='json')
+
   app = config.make_wsgi_app()
   server = make_server('0.0.0.0', 5000, app)
   server.serve_forever()

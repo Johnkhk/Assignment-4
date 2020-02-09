@@ -24,6 +24,13 @@ def add_new_user(req):
   New_user = requests.post(REST_SERVER + '/new_users', data = data).json()
   return render_to_response('templates/show_users.html', {'users': New_user}, request=req)
 
+def changestatus(req):
+  # Get all the data that is going to be sent (needs to be a dict like "data")
+  # print(req.params) #debugging
+  data = {"Status": req.params['Status']}
+  newstatus = requests.post(REST_SERVER + '/changestatus', data = data).json()
+  return render_to_response('templates/adminportal.html', {'Users': newstatus}, request=req)
+
 
 
 
@@ -80,7 +87,8 @@ if __name__ == '__main__':
   config.add_route('admin', '/admin')
   config.add_view(admin, route_name='admin')
 
-
+  config.add_route('changestatus', '/changestatus')
+  config.add_view(changestatus, route_name='changestatus', request_method = "POST")
 
 
   config.add_route('new_user', '/new_user')

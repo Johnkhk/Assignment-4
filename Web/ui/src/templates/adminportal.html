@@ -55,14 +55,22 @@
     {% endfor %}
   </table>
 
-  <script>
-    
+  <script action="/changestatus" method="POST">
+  /*  
   var x = 0; 
+  while(x<10){
     console.log(x);
-    document.getElementsByClassName("verify")[x].onclick = function()
+    x++;
+  }*/
+  var x = 0;
+    
+        document.getElementsByClassName("verify")[x].onclick = function()
         {
           document.getElementsByClassName("status")[x].innerHTML="Verified"
           console.log(x)
+          let request = {};
+          request["Status"] = "Verified";
+
         }
 
 
@@ -71,11 +79,8 @@
           document.getElementsByClassName("status")[x].innerHTML="Void"
           console.log(x)
         }
-        
-      x++;
-  
     
-
+    
 
   
   </script>
