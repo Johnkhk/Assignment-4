@@ -30,11 +30,11 @@
     <tr>
       <td>{{user.Username}}</td>
 
-      <td id = "status">{{user.Status}}</td>
+      <td class = "status"> {{user.Status}}</td>
 
-      <td> <button onclick="veruser()" id="verify">Verify User</button> </td> </td>
+      <td> <button class="verify">Verify User</button> </td> </td>
 
-      <td> <button onclick="voiduser()" id="void">Void User</button> </td> </td>
+      <td> <button class="void">Void User</button> </td> </td>
       
     </tr>
 
@@ -57,18 +57,28 @@
 
   <script>
     
-    function veruser(){
-      var table = document.getElementById("myTable");
-      //table.rows[count][1].innerHTML = "Verified"
-      document.getElementById("status").innerHTML = "Verified"
-    }
+  var x = 0; 
+    console.log(x);
+    document.getElementsByClassName("verify")[x].onclick = function()
+        {
+          document.getElementsByClassName("status")[x].innerHTML="Verified"
+          console.log(x)
+        }
+
+
+        document.getElementsByClassName("void")[x].onclick = function()
+        {
+          document.getElementsByClassName("status")[x].innerHTML="Void"
+          console.log(x)
+        }
+        
+      x++;
+  
     
-    function voiduser(){
-      var table = document.getElementById("myTable");
-      //table.rows[count][1].innerHTML = "Void"
-      document.getElementById("status").innerHTML = "Void!"
-    }
-    </script>
+
+
+  
+  </script>
     
   
 </body>
