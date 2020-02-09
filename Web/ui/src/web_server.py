@@ -22,12 +22,12 @@ def add_new_user(req):
   # print(req.params) #debugging
   data = {"Username": req.params['Username'], "Password":  req.params['Password']}
   New_user = requests.post(REST_SERVER + '/new_users', data = data).json()
-  return render_to_response('templates/show_users.html', {'users': New_user}, request=req)
+  return render_to_response('templates/portal.html', {}, request=req)
 
 def changestatus(req):
   # Get all the data that is going to be sent (needs to be a dict like "data")
   print("---------------------------------->")
-  print(req.params) #debugging
+  print(req.params["Status"]) #debugging
   print("---------------------------------->")
   data = {"Username" : req.params['Username'], "Status": req.params['Status']}
   newstatus = requests.post(REST_SERVER + '/change_status', data = data).json()

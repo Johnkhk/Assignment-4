@@ -6,7 +6,6 @@
 <h1 align='center'>Welcome Admins!</h1>
 
 <p align='center'>Admin Portal.</p>
-<form action="/changestatus" method="POST">
 
   <table id="myTable"style="width:30%" align='center'>
     <tr>
@@ -38,16 +37,16 @@
       <td> <button class="void" onclick= "void_user()">Void User</button> </td> </td>
       
     </tr>
-  </form>
 </body>
 </html>
 
 
     <script>
     //myarray[count]=count;
+//  var myarray[count]= user.Username;
+
     count++;
-    //console.log(count);
-    //console.log(myarray);
+        //console.log(myarray);
     //console.log()
     //var button1[count] = document.getElementById("verify");
     //button1[count].id = "verify"+count;
@@ -57,14 +56,7 @@
     </script>
     {% endfor %}
   </table>
-
-  <script action="/changestatus" method="POST">
-  /*  
-  var x = 0; 
-  while(x<10){
-    console.log(x);
-    x++;
-  }*/
+    <script>
 
 
   function verify_user(){      
@@ -73,13 +65,10 @@
         let number = i;
         document.getElementsByClassName("verify")[number].onclick = function()
           {
-            console.log(i);
+            
             document.getElementsByClassName("status")[number].innerHTML="Verified" 
             let request = {}; 
-            request["Status"] = "Void";  
-            request["Username"] = document.getElementsByClassName("Username")[number]; 
-
-            http.post("http://localhost:5000/changestatus", params = request )
+            request["Status"] = "Verified"; 
           };
       }
     }
@@ -95,11 +84,9 @@
 
               //rIndex = this.rowIndex;
             document.getElementsByClassName("status")[number].innerHTML="Void" 
-            let request = {}; 
-            request["Status"] = "Void";  
-            request["Username"] = document.getElementsByClassName("Username")[number]; 
-    
-            http.post("http://localhost:5000/changestatus", params = request )
+            var temporary = {}; 
+            temporary["Status"] = "Void";  
+
           };
       }
     }
