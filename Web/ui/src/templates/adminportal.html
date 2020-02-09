@@ -32,9 +32,9 @@
 
       <td class = "status"> {{user.Status}}</td>
 
-      <td> <button class="verify">Verify User</button> </td> </td>
+      <td> <button class="verify" onclick= "verify_user()">Verify User</button> </td> </td>
 
-      <td> <button class="void">Void User</button> </td> </td>
+      <td> <button class="void" onclick= "void_user()">Void User</button> </td> </td>
       
     </tr>
 
@@ -62,33 +62,38 @@
     console.log(x);
     x++;
   }*/
-  var x = 0;
-
-    
-        document.getElementsByClassName("verify")[x].onclick = function()
-        {
-          document.getElementsByClassName("status")[x].innerHTML="Verified"
-          console.log(x)
-          let request = {};
-          request["Status"] = "Verified";
-
-        }
 
 
-        document.getElementsByClassName("void")[x].onclick = function()
-        {
-          document.getElementsByClassName("status")[x].innerHTML="Void"
-          console.log(x)
-        }
-    
-    
+  function verify_user(){      
+      for(var i = 0; i < count-1; i++)
+      {
+        let number = i;
+        document.getElementsByClassName("verify")[number].onclick = function()
+          {
+            console.log(i);
+            document.getElementsByClassName("status")[number].innerHTML="Verified" 
+            let request = {}; 
+            request["Status"] = "Verified";
+              //rIndex = this.rowIndex;
+          };
+      }
+    }
 
+    function void_user(){      
+      for(var i = 0; i < count-1; i++)
+      {
+        let number = i;
+
+          document.getElementsByClassName("void")[number].onclick = function()
+          {
+            console.log(number);
+
+              //rIndex = this.rowIndex;
+            document.getElementsByClassName("status")[number].innerHTML="Void" 
+            let request = {}; 
+            request["Status"] = "Void";          
+          };
+      }
+    }
   
   </script>
-    
-  
-</body>
-
-
-
-</html>
