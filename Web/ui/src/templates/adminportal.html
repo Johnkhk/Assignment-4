@@ -6,6 +6,7 @@
 <h1 align='center'>Welcome Admins!</h1>
 
 <p align='center'>Admin Portal.</p>
+<form action="/changestatus" method="POST">
 
   <table id="myTable"style="width:30%" align='center'>
     <tr>
@@ -28,7 +29,7 @@
     {% for user in users %}
 
     <tr>
-      <td>{{user.Username}}</td>
+      <td class = "Username">{{user.Username}}</td>
 
       <td class = "status"> {{user.Status}}</td>
 
@@ -37,7 +38,9 @@
       <td> <button class="void" onclick= "void_user()">Void User</button> </td> </td>
       
     </tr>
-
+  </form>
+</body>
+</html>
 
 
     <script>
@@ -73,8 +76,10 @@
             console.log(i);
             document.getElementsByClassName("status")[number].innerHTML="Verified" 
             let request = {}; 
-            request["Status"] = "Verified";
-              //rIndex = this.rowIndex;
+            request["Status"] = "Void";  
+            request["Username"] = document.getElementsByClassName("Username")[number]; 
+
+            http.post("http://localhost:5000/changestatus", params = request )
           };
       }
     }
@@ -91,7 +96,10 @@
               //rIndex = this.rowIndex;
             document.getElementsByClassName("status")[number].innerHTML="Void" 
             let request = {}; 
-            request["Status"] = "Void";          
+            request["Status"] = "Void";  
+            request["Username"] = document.getElementsByClassName("Username")[number]; 
+    
+            http.post("http://localhost:5000/changestatus", params = request )
           };
       }
     }
